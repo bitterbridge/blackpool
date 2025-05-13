@@ -234,7 +234,7 @@ impl VirtualMachine {
         SetUpvalue(index) => {
           let upvalue_reference = self.get_current_closure().upvalues[index as usize];
           let value = self.peek(0)?;
-          let mut upvalue = self.garbage_collector.deref_mut(upvalue_reference);
+          let upvalue = self.garbage_collector.deref_mut(upvalue_reference);
           if upvalue.closed.is_none() {
             self.stack[upvalue.location] = value;
           } else {
@@ -332,7 +332,7 @@ impl VirtualMachine {
           if let (Value::Class(subclass_reference), Value::Class(superclass_reference)) = pair {
             let superclass = self.garbage_collector.deref(superclass_reference);
             let methods = superclass.methods.clone();
-            let mut subclass = self.garbage_collector.deref_mut(subclass_reference);
+            let subclass = self.garbage_collector.deref_mut(subclass_reference);
             subclass.methods = methods;
             self.pop()?;
           } else {

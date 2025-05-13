@@ -57,6 +57,7 @@ macro_rules! test_instructions {
   }};
 }
 
+#[allow(unused_macros)]
 macro_rules! test_scanner_tokens {
   ($string: expr, [$($token:expr),*]) => {{
     { // Begin test scope.

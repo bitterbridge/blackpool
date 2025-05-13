@@ -15,7 +15,6 @@ extern crate thiserror;
 
 #[macro_use]
 pub mod _macro;
-pub use _macro::*;
 
 pub mod bound_method;
 pub mod chunk;
